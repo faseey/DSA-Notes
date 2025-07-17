@@ -40,7 +40,7 @@ class Solution {
 
             }
         }
-        return new String (str);
+        return new String (str); //TC O(N^2)  TL HITTT!!! at last case :(
 
     }
     public static String optimalminWindow(String s, String t) {
@@ -82,7 +82,7 @@ class Solution {
 
         return minlen == Integer.MAX_VALUE ? "" : s.substring(start, start + minlen);
 
-    }
+    }//TC O(N)
 
 
 
