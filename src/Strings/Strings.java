@@ -84,6 +84,9 @@ public class Strings {
         String name = "Fasih Khalil";
         char[] ch = name.toCharArray();
         System.out.println(Arrays.toString(ch));
+        String name1 ="ali";
+        System.out.println(Arrays.toString(name1.toCharArray()));
+
     }
 
 }
