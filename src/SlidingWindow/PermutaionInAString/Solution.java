@@ -1,32 +1,30 @@
 package SlidingWindow.PermutaionInAString;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 class Solution {
     public static boolean brutecheckInclusion(String s1, String s2) {
         int n = s1.length();
-        int[] arr1 = new int[26];
-        int[] arr2 = new int[26];
-        for(int i =0;i<n;i++){
-            arr1[s1.charAt(i) - 'a']++;
+        char[] chr =s1.toCharArray();
+        Arrays.sort(chr);
+        String sorted = new String(chr);
+
+        Set<String> substrings = new HashSet<>();
+
+        for (int s = 0; s <= s2.length() - n; s++) {
+            String sub = s2.substring(s, s + n); // get 2-char substring
+            chr = sub.toCharArray();
+            Arrays.sort(chr);
+            sub = new String(chr);
+
+            substrings.add(sub); // or use it as needed
         }
 
-        int i =0 ,j =0;
-
-        while(j<s2.length()){
-            arr2[s2.charAt(j) - 'a']++;
-
-            if(j-i+1 <n){
-                j++;
-                continue;
-            }
-            if(Arrays.equals(arr1,arr2)) return true;
-            arr2[s2.charAt(i) - 'a']--;
-            i++;
-            j++;
-
-
+        if(substrings.contains(sorted)){
+            return true;
         }
         return false;
-
 
     }
     public static boolean optimizedcheckInclusion(String s1, String s2) {
