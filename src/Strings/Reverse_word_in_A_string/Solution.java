@@ -30,7 +30,7 @@ class Solution {
     }
 
     public static void main(String[] args) {
-    String s = "the sky is blue";
+    String s = "a good   example";
         System.out.println(reverseWords(s));
     }
 }
