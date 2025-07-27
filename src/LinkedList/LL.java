@@ -363,18 +363,104 @@ public class LL {
         Node forward = head;
         Node curr = head;
         Node prev = null;
-        Node after = null;
 
         for(int i=0;i<n;i++){
             forward = forward.next;
             curr.next = prev;
-            if(prev == null) after = curr;
             prev = curr;
             curr = forward;
         }
-        after.next= forward;
+        head.next= forward;
 
         return prev;
+    }
+    //https://leetcode.com/problems/intersection-of-two-linked-lists/description/
+    public Node getIntersectionNode(Node headA, Node headB) {
+
+        for(Node tmp=headA;tmp!=null;tmp=tmp.next){
+
+
+            for(Node tmp2=headB;tmp2!=null;tmp2=tmp2.next){
+
+                if(tmp == tmp2){
+                    Node skipA = new Node(tmp.value);
+
+                    return skipA;
+                }
+            }
+        }
+        return null;
+
+    }
+    //follow up in O(N+m)
+    public Node optimalgetIntersectionNode(Node headA, Node headB) {
+        Node a = headA;
+        Node b = headB;
+
+        while(a!=b){
+            a = (a==null)? headB : a.next;
+            b = (b==null)? headA : b.next;
+        }
+        return a;
+
+    }
+
+    //https://leetcode.com/problems/reverse-nodes-in-k-group/description/
+    public Node reverseKGroup(Node head, int k) {
+        Node dummy = new Node(0);
+        dummy.next = head;
+        Node tail = dummy;
+
+        while(tail!=null){
+            boolean flag = true;
+            Node temp = tail;
+            int i =0;
+            while(i<k){
+                if(temp.next!= null){
+                    temp = temp.next;
+                    i++;
+                }
+                else{
+                    flag = false;
+                    break;
+                }
+            }
+            if(flag){
+                tail.next = reverse(tail.next ,k);
+                i=0;
+                while(i<k){
+
+                    tail = tail.next;
+                    i++;
+                }
+            }
+            else break;
+
+        }
+        return dummy.next;
+
+    }
+    //https://leetcode.com/problems/rotate-list/
+    public Node rotateRight(Node head, int k) {
+        if (head == null || head.next == null || k == 0) return head;
+        Node temp = head;
+        int length =1;
+        while(temp.next != null){
+            length++;
+            temp = temp.next;
+        }
+        k = k%length;
+        int r = length-k;
+        temp.next = head;
+        temp = temp.next;
+        for(int i=1;i<r;i++){
+            temp = temp.next;
+
+        }
+        head = temp.next;
+        temp.next = null;
+        return head;
+
     }
         public static void main(String[] args) {
         LL first = new LL();
