@@ -462,6 +462,51 @@ public class LL {
         return head;
 
     }
+    //https://leetcode.com/problems/remove-nth-node-from-end-of-list/
+    public Node removeNthFromEnd(Node head, int n) {
+        if(head == null || head.next ==null) return null;
+        Node temp = head;
+        int length =0;
+
+        while(temp != null){
+            temp = temp.next;
+            length++;
+        }
+        length = length - n;
+        if(length == 0)return head.next;
+        temp = head;
+        for(int i =1;i<length;i++){
+            temp = temp.next;
+        }
+        temp.next = temp.next.next;
+        return head;
+
+    }//TC O(N+M)
+
+    public Node optimalremoveNthFromEnd(Node head, int n) {
+        if(head.next == null) return null;
+        Node dummy = new Node(0);
+        dummy.next = head;
+        Node slow = dummy;
+        Node fast = dummy;
+
+        int i =1;
+        while(i<=n){
+
+            fast = fast.next;
+            i++;
+        }
+
+
+        while(fast.next!= null){
+            fast = fast.next;
+            slow = slow.next;
+
+        }
+        slow.next = slow.next.next;
+        return dummy.next;
+
+    }//in one pass TC O(N)
         public static void main(String[] args) {
         LL first = new LL();
         LL second = new LL();
