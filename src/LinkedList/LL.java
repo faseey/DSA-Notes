@@ -142,6 +142,7 @@ public class LL {
 
     private class Node {
         private int value;
+        private Node random;
         private Node next;
 
         public Node(int value) {
@@ -507,6 +508,44 @@ public class LL {
         return dummy.next;
 
     }//in one pass TC O(N)
+
+    public Node copyRandomList(Node head) {
+        if(head == null) return head;
+
+        Node curr = head;
+
+        while(curr !=null){
+            Node temp = new Node(curr.value);
+            temp.next = curr.next;
+            curr.next = temp;
+            curr = curr.next.next;
+        }
+        curr = head;
+
+        while(curr!= null){
+            if(curr.random == null){
+
+            }
+            else{
+                curr.next.random = curr.random.next;
+            }
+            curr = curr.next.next;
+        }
+        curr = head;
+        Node newhead = head.next;
+        Node ans = newhead;
+
+        while(curr!=null && newhead !=null){
+            curr.next = (curr.next==null) ? null:curr.next.next;
+            newhead.next = (newhead.next==null)? null:newhead.next.next;
+            curr = curr.next;
+            newhead = newhead.next;
+        }
+        return ans;
+
+
+    }
+
         public static void main(String[] args) {
         LL first = new LL();
         LL second = new LL();
