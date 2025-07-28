@@ -1,5 +1,7 @@
 package LinkedList;
 
+import java.util.Stack;
+
 public class LL {
 
     private Node head;
@@ -508,7 +510,7 @@ public class LL {
         return dummy.next;
 
     }//in one pass TC O(N)
-
+//https://leetcode.com/problems/copy-list-with-random-pointer/description/
     public Node copyRandomList(Node head) {
         if(head == null) return head;
 
@@ -543,6 +545,120 @@ public class LL {
         }
         return ans;
 
+
+    }
+    //https://leetcode.com/problems/add-two-numbers/
+    public Node addTwoNumbers(Node l1, Node l2) {
+        Node ans = new Node(0);
+        Node current  = ans;
+        int carry =0;
+
+
+        while(l1 !=null || l2!=null || carry !=0){
+            int val1 = (l1!=null)? l1.value : 0;
+            int val2 = (l2!=null)? l2.value : 0;
+
+            int sum = val1 + val2 + carry;
+            carry = sum/10;
+            current.next = new Node(sum %10);
+            current = current.next;
+            l1 = (l1!=null)? l1.next : null;
+            l2 = (l2!=null)? l2.next : null;
+
+
+        }
+
+
+        return ans.next;
+    }
+    //https://leetcode.com/problems/add-two-numbers-ii/description/
+    public Node addTwoNumberstwo(Node l1, Node l2) {
+        Stack<Integer> s1 = new Stack<>();
+        Stack<Integer> s2 = new Stack<>();
+
+
+        while(l1!= null){
+            s1.push(l1.value);
+            l1 = l1.next;
+        }
+        while(l2!= null){
+            s2.push(l2.value);
+            l2 = l2.next;
+        }
+        Node current = null;
+
+        int carry =0;
+
+
+        while(!s1.empty() || !s2.empty() || carry !=0){
+            int val1 = (!s1.empty())? s1.peek() : 0;
+            int val2 = (!s2.empty())? s2.peek() : 0;
+
+            int sum = val1 + val2 + carry;
+            carry = sum/10;
+            Node temp = new Node(sum %10);
+            temp.next = current;
+            current = temp;
+            if (!s1.empty()) s1.pop();
+            if (!s2.empty()) s2.pop();
+
+        }
+
+
+        return current;
+    }
+    //https://leetcode.com/problems/find-the-duplicate-number/
+    public int findDuplicate(int[] nums) {
+
+        int slow = nums[0];
+        int fast = nums[0];
+        slow = nums[slow];
+        fast = nums[nums[fast]];
+
+        while(slow != fast){
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        }
+        slow = nums[0];
+
+        while(slow != fast){
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        return fast;
+
+    }
+    //https://leetcode.com/problems/merge-k-sorted-lists/description/
+    public Node merges(Node l1 , Node l2){
+        if(l1 == null) return l2;
+        if(l2 == null) return l1;
+
+        if(l1.value<=l2.value){
+            l1.next = merge(l1.next,l2);
+            return l1;
+        }
+        else{
+            l2.next = merge(l1,l2.next);
+            return l2;
+        }
+
+    }
+    public Node partition(int s,int e,Node[] lists){
+        if(s>e) return null;
+        if(s==e) return lists[s];
+
+        int mid = s+(e-s)/2;
+        Node l1 = partition(s,mid,lists);
+        Node l2 = partition(mid+1,e,lists);
+        return merges(l1,l2);
+
+    }
+    public Node mergeKLists(Node[] lists) {
+        int k = lists.length;
+        if(k==0) return null;
+
+
+        return partition(0,k-1,lists);
 
     }
 
