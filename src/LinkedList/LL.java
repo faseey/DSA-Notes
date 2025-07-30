@@ -225,7 +225,7 @@ public class LL {
     }
 //https://leetcode.com/problems/remove-duplicates-from-sorted-list/
     public Node deleteDuplicates(Node head) {
-        if(head == null) return null;
+       // if(head == null) return null;
         Node temp = head;
 
         while(temp.next != null && temp != null ){
@@ -660,6 +660,63 @@ public class LL {
 
         return partition(0,k-1,lists);
 
+    }
+    //https://leetcode.com/problems/partition-list/
+
+    public Node partition(Node head, int x) {
+        Node small = new Node (0);
+        Node ans = small;
+        Node dummy = new Node (0);
+        Node large = dummy;
+
+        while(head != null){
+            Node temp =  new Node(head.value);
+            if(head.value < x){
+                small.next = temp;
+                small  = small.next;
+                head = head.next;
+            }
+            else{
+                large.next = temp;
+                large = large.next;
+                head = head.next;
+            }
+        }
+
+
+        small.next  = dummy.next;
+        return ans.next;
+
+    }
+
+    //https://leetcode.com/problems/happy-number/description/
+    class Solution {
+        public boolean isHappy(int n) {
+            int slow = n;
+            int fast = n;
+
+            do{
+                slow = square(slow);
+                fast = square(square(fast));
+            }while(slow!=fast);
+
+            if(slow ==1) return true;
+            return false;
+
+
+        }
+        private int square(int n){
+            int sum=0;
+
+            while(n>0){
+                int num = n%10;
+                num = num * num;
+                sum+= num;
+                n= n/10;
+            }
+            return sum;
+
+        }
     }
 
         public static void main(String[] args) {
