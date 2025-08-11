@@ -5,7 +5,7 @@ import java.util.List;
 
 public class letterCombination {
     public static void main(String[] args) {
-        System.out.println(pad("","12"));
+        System.out.println(pad("","123"));
     }
 
     static String[] mapping = {
@@ -37,4 +37,5 @@ public class letterCombination {
         }
         return list;
     }
+
 }
