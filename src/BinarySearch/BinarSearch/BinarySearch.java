@@ -22,11 +22,30 @@ public class BinarySearch {
         }
         return -1;
     }
+    static int recbinarysearch(int s,int e , int[] arr , int target){
+        if(s>e) return -1;
+
+        int mid = s +(e-s)/2;
+        if(arr[mid] == target){
+            return mid;
+        }
+        else if(arr[mid] < target ){
+            return recbinarysearch(mid+1,e,arr,target);
+
+        }
+        else{
+            return recbinarysearch(s,mid-1,arr,target);
+        }
+
+
+    }
     public static void main(String[] args) {
         int[] arr = {-18, -12, -4, 0, 2, 3, 4, 15, 16, 18, 22, 45, 89};
         int target = 22;
+        int e = arr.length-1;
         int ans = binarySearch(arr, target);
         System.out.println(ans);
+        System.out.println(recbinarysearch(0,e,arr,target));
     }
 
     // return the index

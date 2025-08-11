@@ -46,7 +46,7 @@ class Solution {
     //O(N) Tc abd sc O(N)
 
     public static void main(String[] args) {
-        int[] arr = {-1,-1,0,1,1,0};
+        int[] arr = {1,7,3,6,5,6};
         System.out.println(brutepivotIndex(arr));
         System.out.println(optimalpivotIndex(arr));
     }

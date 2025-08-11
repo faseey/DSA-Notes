@@ -65,8 +65,8 @@ class Solution {
 
 
 public static void main(String[] args) {
-        int[] arr = {1,2,1,2,1};
-        System.out.println(subarraySum(arr,3));
-        System.out.println(optimalsubarraySum(arr,3));
+        int[] arr = {1,2,1,1,1,1,2,1};
+        System.out.println(subarraySum(arr,4));
+        System.out.println(optimalsubarraySum(arr,4));
     }
 }
