@@ -29,6 +29,8 @@ public class levelordertraversal {
 
         }
         return res;
+        //for level order bottom res.add(0,list);
+        //https://leetcode.com/problems/binary-tree-level-order-traversal-ii/
 
     }
 }
