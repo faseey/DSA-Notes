@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Queue;
 
 //https://leetcode.com/problems/average-of-levels-in-binary-tree/
-class Averagelevelsclass {
+public class Averagelevelsclass {
     public List<Double> averageOfLevels(TreeNode root) {
 
         List<Double> result = new ArrayList<>();
