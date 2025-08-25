@@ -1,4 +1,6 @@
-package Trees.Questions;
+package Trees.Questions.BFS;
+
+import Trees.Questions.TreeNode;
 
 import java.util.ArrayList;
 import java.util.Deque;

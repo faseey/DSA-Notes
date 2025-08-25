@@ -1,4 +1,6 @@
-package Trees.Questions;
+package Trees.Questions.BFS;
+
+import Trees.Questions.TreeNode;
 
 public class populating_next_right_pointerclass {
     public TreeNode connect(TreeNode root) {

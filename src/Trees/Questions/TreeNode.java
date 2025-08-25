@@ -1,12 +1,10 @@
 package Trees.Questions;
 
-import com.sun.source.tree.Tree;
-
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-    TreeNode next;
+public class TreeNode {
+   public int val;
+    public TreeNode left;
+    public TreeNode right;
+    public TreeNode next;
 
     public TreeNode(int val, TreeNode left, TreeNode right) {
         this.val = val;
