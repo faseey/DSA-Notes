@@ -1,7 +1,7 @@
 package Trees.Questions.BFS;
 
 import Trees.Questions.TreeNode;
-
+//https://leetcode.com/problems/cousins-in-binary-tree/description/
 public class Cousins_in_binary_tree {
     public boolean isCousins(TreeNode root, int x, int y) {
         TreeNode l = findNode(root,x);

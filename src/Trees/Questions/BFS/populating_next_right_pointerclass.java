@@ -1,7 +1,7 @@
 package Trees.Questions.BFS;
 
 import Trees.Questions.TreeNode;
-
+//https://leetcode.com/problems/populating-next-right-pointers-in-each-node/
 public class populating_next_right_pointerclass {
     public TreeNode connect(TreeNode root) {
         if(root == null) return null;
