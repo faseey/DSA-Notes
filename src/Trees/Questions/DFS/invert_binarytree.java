@@ -1,5 +1,4 @@
-package Trees.Questions.BFS;
-
+package Trees.Questions.DFS;
 import Trees.Questions.TreeNode;
 
 public class invert_binarytree {
