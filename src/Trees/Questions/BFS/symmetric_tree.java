@@ -4,7 +4,7 @@ import Trees.Questions.TreeNode;
 
 import java.util.LinkedList;
 import java.util.Queue;
-
+//https://leetcode.com/problems/symmetric-tree/
 public class symmetric_tree  {
     public boolean isSymmetric(TreeNode root) {
         Queue<TreeNode> q = new LinkedList<>();
